@@ -13,8 +13,8 @@ const RecipeDetails = ({ route }) => {
   const nutritionKeys = Object.keys(nutrition || {});
   const instructions = item?.instructions || [];
 
-  console.log('item', item);
-  console.log('nutritionKeys', nutritionKeys);
+//   console.log('item', item);
+//   console.log('nutritionKeys', nutritionKeys);
 
   return (
     <SafeAreaView style={styles.container}>

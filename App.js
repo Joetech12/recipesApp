@@ -14,6 +14,7 @@ import {
   RecipesContext,
 } from './src/context/recipesContext';
 import RecipeDetails from './src/screens/RecipeDetails';
+import colors from './src/constants/colors';
 
 const Stack = createStackNavigator();
 
@@ -79,7 +80,11 @@ export default function App() {
             <Stack.Screen
               name="Home"
               component={Home}
-              options={{ headerLeft: null, gestureEnabled: false }}
+              options={{
+                headerLeft: null,
+                gestureEnabled: false,
+                headerTitleStyle: { color: colors.green },
+              }}
             />
             <Stack.Screen
               name="Search"
@@ -92,6 +97,7 @@ export default function App() {
               options={{
                 headerLeft: (props) => <BackButton {...props} />,
                 title: '',
+                // headerLeft: ''
               }}
             />
           </Stack.Navigator>
