@@ -13,8 +13,8 @@ const RecipeDetails = ({ route }) => {
   const nutritionKeys = Object.keys(nutrition || {});
   const instructions = item?.instructions || [];
 
-//   console.log('item', item);
-//   console.log('nutritionKeys', nutritionKeys);
+  //   console.log('item', item);
+  //   console.log('nutritionKeys', nutritionKeys);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -34,14 +34,16 @@ const RecipeDetails = ({ route }) => {
           text="Instructions"
         />
 
-        {instructions?.map((instruction, index) => (
-          <View key={instruction?.id} style={styles.instructionRow}>
-            <Text style={styles.index}>{index + 1}</Text>
-            <Text style={styles.instructionText}>
-              {instruction?.display_text}
-            </Text>
-          </View>
-        ))}
+        <View style={{ marginBottom: 50 }}>
+          {instructions?.map((instruction, index) => (
+            <View key={instruction?.id} style={styles.instructionRow}>
+              <Text style={styles.index}>{index + 1}</Text>
+              <Text style={styles.instructionText}>
+                {instruction?.display_text}
+              </Text>
+            </View>
+          ))}
+        </View>
 
         {!instructions?.length ? (
           <Text style={styles.value}>No instructions found</Text>

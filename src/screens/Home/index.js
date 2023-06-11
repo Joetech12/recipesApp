@@ -15,16 +15,16 @@ import colors from '../../constants/colors';
 import { ScrollView } from 'react-native';
 import { ActivityIndicator } from 'react-native';
 
+const ALL = 'All';
+
 const Home = ({ navigation }) => {
   const [tags, setTags] = useState([]);
-  //   const [selectedTag, setSelectedTag] = useState(ALL);
-  const [selectedTag, setSelectedTag] = useState();
+  const [selectedTag, setSelectedTag] = useState(ALL);
+  //   const [selectedTag, setSelectedTag] = useState();
   const { healthyRecipes } = useContext(HealthyRecipesContext);
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const { recipes } = useContext(RecipesContext);
   const [loading, setloading] = useState(true);
-
- 
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,7 +51,9 @@ const Home = ({ navigation }) => {
   }, [recipes]);
 
   useEffect(() => {
-    if (selectedTag) {
+    if (selectedTag === 'All') {
+      setFilteredRecipes(recipes);
+    } else if (selectedTag) {
       const filteredItems = recipes?.filter((rec) => {
         const tag = rec?.tags?.find((t) => t?.name === selectedTag);
         return !!tag;
@@ -104,12 +106,12 @@ const Home = ({ navigation }) => {
           />
         )}
 
-        <Categories
-          // categories={[ALL, ...tags]}
-          categories={tags}
+        {!loading && <Categories
+          categories={[ALL, ...tags]}
+          //   categories={tags}
           selectedCategory={selectedTag}
           onCategoryPress={setSelectedTag}
-        />
+        />}
         {loading ? (
           <View style={styles.spinnerContainer2}>
             <ActivityIndicator size="large" color={colors.green} />

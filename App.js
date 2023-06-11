@@ -38,6 +38,13 @@ const BackButton = (props) => {
   );
 };
 
+const HeaderLogo = (props) => {
+  <View style={{ flexDirection: 'row' }}>
+    <Image source={require('./assets/logo2.png')} />
+    <Text>Foodie</Text>
+  </View>;
+};
+
 export default function App() {
   const [recipes, setRecipes] = useState([]);
   const [healthyRecipes, setHealthyRecipes] = useState([]);
@@ -78,12 +85,13 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Home"
+              name="Foodie"
               component={Home}
               options={{
                 headerLeft: null,
                 gestureEnabled: false,
                 headerTitleStyle: { color: colors.green },
+                headerTitle: 'Foodie Guide'
               }}
             />
             <Stack.Screen
