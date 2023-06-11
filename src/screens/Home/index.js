@@ -162,6 +162,7 @@ const Home = ({ navigation }) => {
               color: colors.Grey,
               fontSize: 13,
               opacity: 0.5,
+              marginBottom: 30,
             }}
           >
             Ifeanyi Umeh © 2023
